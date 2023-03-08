@@ -133,6 +133,14 @@ public class Employee  {
         this.dni = dni;
     }
 
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
