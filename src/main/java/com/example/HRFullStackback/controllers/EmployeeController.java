@@ -7,6 +7,7 @@ import com.example.HRFullStackback.models.Employee;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -14,12 +15,11 @@ import java.util.UUID;
 @RequestMapping("/employees")
 public class EmployeeController {
     List <Employee> employeeList = new ArrayList<>(List.of(
-            new Employee("Perico Lospa Lotes" ),
-            new Employee("Mihaela Gheorghiu" ),
-            new Employee("Gustavo Ardaya" ),
-            new Employee("Daniel Gallego" ),
-            new Employee("Jaume Vidal" )
-
+            new Employee("Perico","Lospa Lotes", "", "Currante","600123456","perico@lospa.com","Barcelona","12345678Z",1234.56,new Date("2020/04/27"),new Date("1987/07/05")),
+            new Employee("Mihaela","Gheorghiu","", "Currante","600123456","perico@lospa.com","Barcelona","12345678Z",1234.56,new Date("2020/04/27"),new Date("1987/07/05")),
+            new Employee("Gustavo","Ardaya", "", "Currante","600123456","perico@lospa.com","Barcelona","12345678Z",1234.56,new Date("2020/04/27"),new Date("1987/07/05")),
+            new Employee("Daniel","Gallego" ,"", "Currante","600123456","perico@lospa.com","Barcelona","12345678Z",1234.56,new Date("2020/04/27"),new Date("1987/07/05")),
+            new Employee("Jaume","Vidal" ,"", "Currante","600123456","perico@lospa.com","Barcelona","12345678Z",1234.56,new Date("2020/04/27"),new Date("1987/07/05"))
     ) );
     @GetMapping
     public List<Employee> getAllEmployees(){
