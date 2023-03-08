@@ -57,14 +57,58 @@ public class EmployeeController {
     }
 
     @GetMapping("search")
-    public List<Employee> searchEmployeeBy(@RequestParam(required = false)String name){
-        if(name==null)return null;
-        return this.employeeList.stream().filter(
+    public List<Employee> searchEmployeeBy(
+            @RequestParam(required = false)String name,
+            @RequestParam(required = false)String dni,
+            @RequestParam(required = false)String position,
+            @RequestParam(required = false)String location
+    ){
+        List<Employee> filteredList=this.employeeList;
+        if(name!=null)
+            filteredList= filterListByName(filteredList,name);
+        if(dni!=null)
+            filteredList= filterListByDni(filteredList,dni);
+        if(position!=null)
+            filteredList= filterListByPosition(filteredList,position);
+        if(location!=null)
+            filteredList= filterListByLocation(filteredList,location);
+        return filteredList;
+    }
+
+    private List<Employee> filterListByPosition(List<Employee> list,String position) {
+        return list.stream().filter(
+                player -> player.getPosition()
+                        .toLowerCase()
+                        .contains(position.toLowerCase())
+        ).toList();
+    }
+    private List<Employee> filterListByLocation(List<Employee> list,String location) {
+        return list.stream().filter(
+                player -> player.getLocation()
+                        .toLowerCase()
+                        .contains(location.toLowerCase())
+        ).toList();
+    }
+
+    private List<Employee> filterListByDni(List<Employee>list,String dni) {
+        return list.stream().filter(
+                player -> player.getDni()
+                        .toLowerCase()
+                        .contains(dni.toLowerCase())
+        ).toList();
+    }
+
+    private List<Employee>filterListByName(List<Employee>list,String name){
+        return list.stream().filter(
                 player->player.getName()
                         .toLowerCase()
                         .contains(name.toLowerCase())
         ).toList();
     }
+
+
+
+
 
 }
 
