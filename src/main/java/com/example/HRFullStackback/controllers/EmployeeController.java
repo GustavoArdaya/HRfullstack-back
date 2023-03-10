@@ -12,6 +12,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/employees")
+@CrossOrigin(origins = "http://localhost:3000")
 public class EmployeeController {
 
     private final IEmployeeRepository employeeRepository;
