@@ -11,11 +11,11 @@ import java.util.UUID;
 @Repository
 public class EmployeeInMemoryRepository implements IEmployeeRepository {
     List <Employee> employeeList = new ArrayList<>(List.of(
-            new Employee("Perico","Lospa Lotes", "", "Currante","600123456","perico@lospa.com","Barcelona","12345678Z",1234.56,new Date("2020/04/27"),new Date("1987/07/05")),
-            new Employee("Mihaela","Gheorghiu","", "Currante","600123456","perico@lospa.com","Barcelona","12345678Z",1234.56,new Date("2020/04/27"),new Date("1987/07/05")),
-            new Employee("Gustavo","Ardaya", "", "Currante","600123456","perico@lospa.com","Barcelona","12345678Z",1234.56,new Date("2020/04/27"),new Date("1987/07/05")),
-            new Employee("Daniel","Gallego" ,"", "Currante","600123456","perico@lospa.com","Barcelona","12345678Z",1234.56,new Date("2020/04/27"),new Date("1987/07/05")),
-            new Employee("Jaume","Vidal" ,"", "Currante","600123456","perico@lospa.com","Barcelona","12345678Z",1234.56,new Date("2020/04/27"),new Date("1987/07/05"))
+            new Employee("Perico","Lospa Lotes", "./photos/default.png", "Currante","600123456","perico@lospa.com","Barcelona","12345678Z",1234.56,new Date("2020/04/27"),new Date("1987/07/05")),
+            new Employee("Mihaela","Gheorghiu","./photos/MihaelaGheorghiu.jpg", "Currante","600123456","perico@lospa.com","Barcelona","12345678Z",1234.56,new Date("2020/04/27"),new Date("1987/07/05")),
+            new Employee("Gustavo","Ardaya", "./photos/GustavoArdaya.jpg", "Currante","600123456","perico@lospa.com","Barcelona","12345678Z",1234.56,new Date("2020/04/27"),new Date("1987/07/05")),
+            new Employee("Daniel","Gallego" ,"./photos/DanielGallego.png", "Currante","600123456","perico@lospa.com","Barcelona","12345678Z",1234.56,new Date("2020/04/27"),new Date("1987/07/05")),
+            new Employee("Jaume","Vidal" ,"./photos/JaumeVidal.png", "Currante","600123456","perico@lospa.com","Barcelona","12345678Z",1234.56,new Date("2020/04/27"),new Date("1987/07/05"))
     ) );
 
     /**
