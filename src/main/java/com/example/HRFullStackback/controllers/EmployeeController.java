@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.UUID;
 
 @RestController
@@ -39,8 +40,19 @@ public class EmployeeController {
     }
 
     @GetMapping("{id}")
-    public Employee getEmployeeById(@PathVariable UUID id){
-        return this.employeeRepository.findById(id);
+    public ResponseEntity<Employee> getEmployeeById(@PathVariable UUID id){
+        // return this.employeeRepository.findById(id);
+        if (id == null) return ResponseEntity.badRequest().build();
+        Employee employee;
+        try {
+            employee = this.employeeRepository.findById(id);
+        }
+            catch (NoSuchElementException e) { return ResponseEntity.noContent().build();
+            }
+            if (employee == null) return ResponseEntity.noContent().build();
+        return ResponseEntity.ok(employee);
+
+
     }
 
     @PostMapping
