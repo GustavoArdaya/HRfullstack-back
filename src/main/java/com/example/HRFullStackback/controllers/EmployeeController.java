@@ -5,6 +5,8 @@ package com.example.HRFullStackback.controllers;
 
 import com.example.HRFullStackback.models.Employee;
 import com.example.HRFullStackback.repositories.IEmployeeRepository;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,9 +23,19 @@ public class EmployeeController {
         this.employeeRepository = employeeRepository;
     }
 
+    /**
+     * retorna noContent -codigo 204 cuando la lista esta vacia o nula
+     * @return
+     */
     @GetMapping
-    public List<Employee> getAllEmployees(){
-        return this.employeeRepository.findAll();
+    public ResponseEntity<List<Employee>> getAllEmployees(){
+        //return this.employeeRepository.findAll();
+        List<Employee> employees = this.employeeRepository.findAll();
+        if (employees == null || employees.size()==0) {
+            return ResponseEntity.noContent().build();
+        }
+        return new ResponseEntity<>(employees, HttpStatus.OK);
+
     }
 
     @GetMapping("{id}")
@@ -55,6 +67,7 @@ public class EmployeeController {
     ){
         return this.employeeRepository.filterBy(name,dni,position,location);
     }
+
 
 
 
