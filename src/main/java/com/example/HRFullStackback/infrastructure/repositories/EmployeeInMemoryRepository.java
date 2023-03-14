@@ -109,7 +109,7 @@ public class EmployeeInMemoryRepository implements IEmployeeRepository {
      */
     private List<Employee> filterListByPosition(List<Employee> list,String position) {
         return list.stream().filter(
-                player -> player.getPosition()
+                employee -> employee.getPosition()
                         .toLowerCase()
                         .contains(position.toLowerCase())
         ).toList();
@@ -123,7 +123,7 @@ public class EmployeeInMemoryRepository implements IEmployeeRepository {
      */
     private List<Employee> filterListByLocation(List<Employee> list,String location) {
         return list.stream().filter(
-                player -> player.getLocation()
+                employee -> employee.getLocation()
                         .toLowerCase()
                         .contains(location.toLowerCase())
         ).toList();
@@ -137,7 +137,7 @@ public class EmployeeInMemoryRepository implements IEmployeeRepository {
      */
     private List<Employee> filterListByDni(List<Employee>list,String dni) {
         return list.stream().filter(
-                player -> player.getDni()
+                employee -> employee.getDni()
                         .toLowerCase()
                         .contains(dni.toLowerCase())
         ).toList();
@@ -151,7 +151,7 @@ public class EmployeeInMemoryRepository implements IEmployeeRepository {
      */
     private List<Employee>filterListByName(List<Employee>list,String name){
         return list.stream().filter(
-                player->player.getName()
+                employee -> employee.getName()
                         .toLowerCase()
                         .contains(name.toLowerCase())
         ).toList();

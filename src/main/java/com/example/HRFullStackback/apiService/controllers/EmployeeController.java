@@ -56,21 +56,26 @@ public class EmployeeController {
        Employee deleteEmployee=this.employeeService.deleteEmployeeById(id);
        return ResponseEntity.ok(deleteEmployee);
     }
-//
-//    @PutMapping("{id}")
-//    public Employee updateEmployeeById(@PathVariable UUID id, @RequestBody Employee newEmployeeData){
-//        return this.employeeRepository.updateById(id,newEmployeeData);
-//    }
-//
-//    @GetMapping("search")
-//    public List<Employee> searchEmployeeBy(
-//            @RequestParam(required = false)String name,
-//            @RequestParam(required = false)String dni,
-//            @RequestParam(required = false)String position,
-//            @RequestParam(required = false)String location
-//    ){
-//        return this.employeeRepository.filterBy(name,dni,position,location);
-//    }
+
+    @PutMapping("{id}")
+    public ResponseEntity<Employee> updateEmployeeById(@PathVariable UUID id, @RequestBody Employee newEmployeeData){
+        Employee updatedEmployee = this.employeeService.updateById(id,newEmployeeData);
+        return ResponseEntity.ok(updatedEmployee);
+    }
+
+
+    @GetMapping("search")
+    public ResponseEntity<List<Employee>> searchEmployeeBy(
+            @RequestParam(required = false)String name,
+            @RequestParam(required = false)String dni,
+            @RequestParam(required = false)String position,
+            @RequestParam(required = false)String location
+    ){
+        var filteredList = this.employeeService.filterBy(name,dni,position,location);
+        return ResponseEntity.ok(filteredList);
+
+
+    }
 
 
 

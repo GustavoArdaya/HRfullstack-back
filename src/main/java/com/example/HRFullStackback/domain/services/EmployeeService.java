@@ -47,5 +47,13 @@ public class EmployeeService {
     public Employee deleteEmployeeById( UUID id) {
         return this.employeeRepository.removeById(id);
     }
+
+    public Employee updateById(UUID id, Employee newEmployeeData) {
+        return this.employeeRepository.updateById(id,newEmployeeData);
+    }
+
+    public List<Employee> filterBy(String name, String dni, String position, String location) {
+        return this.employeeRepository.filterBy(name,dni,position,location);
+    }
 }
 
