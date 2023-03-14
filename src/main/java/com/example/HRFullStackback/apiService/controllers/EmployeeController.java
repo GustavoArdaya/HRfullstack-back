@@ -1,10 +1,10 @@
-package com.example.HRFullStackback.controllers;
+package com.example.HRFullStackback.apiService.controllers;
 
 
 
 
-import com.example.HRFullStackback.models.Employee;
-import com.example.HRFullStackback.repositories.IEmployeeRepository;
+import com.example.HRFullStackback.domain.models.Employee;
+import com.example.HRFullStackback.infrastructure.repositories.IEmployeeRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

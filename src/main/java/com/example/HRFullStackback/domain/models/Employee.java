@@ -1,4 +1,4 @@
-package com.example.HRFullStackback.models;
+package com.example.HRFullStackback.domain.models;
 import java.util.Date;
 import java.util.UUID;
 

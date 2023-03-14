@@ -1,6 +1,6 @@
-package com.example.HRFullStackback.repositories;
+package com.example.HRFullStackback.infrastructure.repositories;
 
-import com.example.HRFullStackback.models.Employee;
+import com.example.HRFullStackback.domain.models.Employee;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;

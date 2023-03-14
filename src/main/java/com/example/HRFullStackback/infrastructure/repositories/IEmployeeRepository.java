@@ -1,12 +1,7 @@
-package com.example.HRFullStackback.repositories;
+package com.example.HRFullStackback.infrastructure.repositories;
 
-import com.example.HRFullStackback.models.Employee;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import com.example.HRFullStackback.domain.models.Employee;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
