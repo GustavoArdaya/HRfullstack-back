@@ -5,6 +5,7 @@ import com.example.HRFullStackback.infrastructure.repositories.IEmployeeReposito
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,4 +41,11 @@ public class EmployeeService {
         }
         return employee;
     }
+    public Employee createEmployee( Employee employee){
+        return this.employeeRepository.save(employee);
+    }
+    public Employee deleteEmployeeById( UUID id) {
+        return this.employeeRepository.removeById(id);
+    }
 }
+

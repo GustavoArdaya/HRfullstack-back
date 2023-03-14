@@ -44,15 +44,18 @@ public class EmployeeController {
         return ResponseEntity.ok(employee);
     }
 
-//    @PostMapping
-//    public Employee createEmployee(@RequestBody Employee employee){
-//        return this.employeeRepository.save(employee);
-//    }
-//
-//    @DeleteMapping("{id}")
-//    public Employee deleteEmployeeById(@PathVariable UUID id) {
-//        return this.employeeRepository.removeById(id);
-//    }
+   @PostMapping
+    public ResponseEntity<Employee> createEmployee(@RequestBody Employee employee){
+       Employee newEmployee=this.employeeService.createEmployee(employee);
+       return ResponseEntity.ok(newEmployee);
+
+   }
+
+   @DeleteMapping("{id}")
+    public ResponseEntity<Employee> deleteEmployeeById(@PathVariable UUID id) {
+       Employee deleteEmployee=this.employeeService.deleteEmployeeById(id);
+       return ResponseEntity.ok(deleteEmployee);
+    }
 //
 //    @PutMapping("{id}")
 //    public Employee updateEmployeeById(@PathVariable UUID id, @RequestBody Employee newEmployeeData){
