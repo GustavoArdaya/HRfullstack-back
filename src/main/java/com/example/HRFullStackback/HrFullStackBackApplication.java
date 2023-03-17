@@ -10,4 +10,6 @@ public class HrFullStackBackApplication {
 		SpringApplication.run(HrFullStackBackApplication.class, args);
 	}
 
+
+
 }
