@@ -47,12 +47,19 @@ public class EmployeeService {
         return employee;
     }
 
-    /* TODO Refactor
-        public List<Employee> filterBy(String name, String dni, String position, String location) {
 
-            return this.employeeRepository.findAll();
-            //return this.employeeRepository.filterBy(name,dni,position,location);
-        }
-    */
+    public List<Employee> filterBy(String nameParam, String dniParam, String positionParam, String locationParam) {
+
+        String name=nameParam!=null?nameParam:"";
+        String dni=dniParam!=null?dniParam:"";
+        String position=positionParam!=null?positionParam:"";
+        String location=locationParam!=null?locationParam:"";
+        System.out.println(name);
+        System.out.println(dni);
+        System.out.println(position);
+        System.out.println(location);
+        return this.employeeRepository.findByNameContainingIgnoreCaseAndDniContainingIgnoreCaseAndPositionContainingIgnoreCaseAndLocationContainingIgnoreCase(name,dni,position,location);
+    }
+
 }
 

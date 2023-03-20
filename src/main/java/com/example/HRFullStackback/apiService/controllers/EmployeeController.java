@@ -64,7 +64,6 @@ public class EmployeeController {
     }
 
 
-    /* TODO Refactor
     @GetMapping("search")
     public ResponseEntity<List<Employee>> searchEmployeeBy(
             @RequestParam(required = false)String name,
@@ -74,11 +73,8 @@ public class EmployeeController {
     ){
         var filteredList = this.employeeService.filterBy(name,dni,position,location);
         return ResponseEntity.ok(filteredList);
-
-
     }
 
-     */
 
 
 
