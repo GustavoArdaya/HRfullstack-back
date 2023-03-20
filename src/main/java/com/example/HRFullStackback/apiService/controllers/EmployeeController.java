@@ -36,7 +36,7 @@ public class EmployeeController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Employee> getEmployeeById(@PathVariable UUID id){
+    public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id){
         // return this.employeeRepository.findById(id);
         if (id == null) return ResponseEntity.badRequest().header("Id path variable must be present and valid").build();
         Employee employee=this.employeeService.getEmployeeById(id);
@@ -52,18 +52,19 @@ public class EmployeeController {
    }
 
    @DeleteMapping("{id}")
-    public ResponseEntity<Employee> deleteEmployeeById(@PathVariable UUID id) {
+    public ResponseEntity<Employee> deleteEmployeeById(@PathVariable Long id) {
        Employee deleteEmployee=this.employeeService.deleteEmployeeById(id);
        return ResponseEntity.ok(deleteEmployee);
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Employee> updateEmployeeById(@PathVariable UUID id, @RequestBody Employee newEmployeeData){
+    public ResponseEntity<Employee> updateEmployeeById(@PathVariable Long id, @RequestBody Employee newEmployeeData){
         Employee updatedEmployee = this.employeeService.updateById(id,newEmployeeData);
         return ResponseEntity.ok(updatedEmployee);
     }
 
 
+    /* TODO Refactor
     @GetMapping("search")
     public ResponseEntity<List<Employee>> searchEmployeeBy(
             @RequestParam(required = false)String name,
@@ -76,6 +77,8 @@ public class EmployeeController {
 
 
     }
+
+     */
 
 
 

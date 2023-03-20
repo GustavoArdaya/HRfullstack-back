@@ -1,9 +1,19 @@
 package com.example.HRFullStackback.domain.models;
+import jakarta.persistence.*;
+import lombok.Data;
+
 import java.util.Date;
 import java.util.UUID;
-
+@Data
+@Entity
+@Table(name = "employees")
 public class Employee  {
-    private UUID id;
+
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private Long id;
     private String name;
     private String lastName;
     private String photo;
@@ -16,6 +26,8 @@ public class Employee  {
     private Date birthDate;
     private String dni;
 
+    public Employee() {
+    }
 
     public Employee(
             String name,
@@ -31,7 +43,6 @@ public class Employee  {
             Date birthDate
 
     ) {
-        this();
         this.name = name;
         this.lastName = lastName;
         this.photo = photo;
@@ -45,101 +56,6 @@ public class Employee  {
         this.dni = dni;
     }
 
-    public Employee() {
-        this.id = UUID.randomUUID();
-    }
-
-    public UUID getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(String photo) {
-        this.photo = photo;
-    }
-
-    public String getPosition() {
-        return position;
-    }
-
-    public void setPosition(String position) {
-        this.position = position;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public Double getSalary() {
-        return salary;
-    }
-
-    public void setSalary(Double salary) {
-        this.salary = salary;
-    }
-
-    public Date getJoiningDate() {
-        return joiningDate;
-    }
-
-    public void setJoiningDate(Date joiningDate) {
-        this.joiningDate = joiningDate;
-    }
-
-    public Date getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
-    }
-
-    public String getDni() {
-        return dni;
-    }
-
-    public void setDni(String dni) {
-        this.dni = dni;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
 
     /**
      * Updates the atributes of the current instance with the values of the atributes in the given instance, if they are not null
