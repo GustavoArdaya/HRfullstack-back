@@ -30,3 +30,10 @@ VALUES
   	('Brenda Kathleen', 'Johnson Gonzales', 'https://s1.eestatic.com/2017/09/27/actualidad/actualidad_249985847_48310625_864x486.jpg', 'Respuestas Globales', '676917665', 'Brenda_Kathleen@gmail.com', 'San Cugat del Vallés', '01697966Z', '1784', '2019-8-21', '1972-8-31'),
   	('James Brandon', 'Black Berry', 'https://academiaplay.es/wp-content/uploads/2016/10/Nikola-Tesla.jpg', 'Aplicaciones', '691583489', 'James_Brandon@gmail.com', 'Cornellá de Llobregat', 'X0307995W', '2421', '2016-12-6', '1960-5-22'),
   	('Destiny Final', 'Anderson Bennett', 'https://static.wikia.nocookie.net/finaldestination/images/4/4f/Wendy-FD3.png', 'Operaciones Cliente', '672028626', 'final_destiny@gmail.com', 'San Baudilio de Llobregat', '19412499Q', '2489', '2016-8-10', '1986-2-14');
+
+INSERT
+INTO
+  departments
+  (name)
+VALUES
+  ('Ventas'),('Recursos Humanos'),('I&D'),('Marketing'),('Producción');
