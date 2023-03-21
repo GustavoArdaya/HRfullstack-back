@@ -29,4 +29,17 @@ public class DepartmentService {
     public Department createDepartment(Department department) {
                    return this.departmentRepository.save(department);
     }
+
+    public Department updateById(Long id, Department newDepartmentData) {
+        var department = getDepartmentById(id);
+        department.updateAtr(newDepartmentData);
+        departmentRepository.save(department);
+        return department;
+    }
+
+    public Department deleteDepartmentById( Long id) {
+        var department=getDepartmentById(id);
+        this.departmentRepository.deleteById(id);
+        return department;
+    }
 }

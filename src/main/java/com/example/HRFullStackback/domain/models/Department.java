@@ -12,4 +12,9 @@ public class Department {
     @Column(name = "id", nullable = false)
     private Long id;
     private String name;
+
+    public void updateAtr(Department newDepartmentData) {
+        String name= newDepartmentData.getName();
+        this.name=name!=null?name:this.name;
+    }
 }
