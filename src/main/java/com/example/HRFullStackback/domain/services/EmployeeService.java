@@ -54,11 +54,8 @@ public class EmployeeService {
         String dni=dniParam!=null?dniParam:"";
         String position=positionParam!=null?positionParam:"";
         String location=locationParam!=null?locationParam:"";
-        System.out.println(name);
-        System.out.println(dni);
-        System.out.println(position);
-        System.out.println(location);
-        return this.employeeRepository.findByNameContainingIgnoreCaseAndDniContainingIgnoreCaseAndPositionContainingIgnoreCaseAndLocationContainingIgnoreCase(name,dni,position,location);
+        return this.employeeRepository
+            .findByNameContainingIgnoreCaseAndDniContainingIgnoreCaseAndPositionContainingIgnoreCaseAndLocationContainingIgnoreCase(name,dni,position,location);
     }
 
 }
