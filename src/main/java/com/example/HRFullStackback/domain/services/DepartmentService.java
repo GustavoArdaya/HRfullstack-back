@@ -23,7 +23,7 @@ public class DepartmentService {
     public Department getDepartmentById(Long id) {
         var department = this.departmentRepository.findById(id);
         if(department.isPresent()) return department.get();
-        throw new RuntimeException();
+        throw new RuntimeException("Could not find any Department with the given id...");
     }
 
     public Department createDepartment(Department department) {

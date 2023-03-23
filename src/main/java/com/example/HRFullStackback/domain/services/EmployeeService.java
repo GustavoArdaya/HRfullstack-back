@@ -27,7 +27,7 @@ public class EmployeeService {
 
         var employee = this.employeeRepository.findById(id);
         if(employee.isPresent()) return employee.get();
-        throw new RuntimeException();
+        throw new RuntimeException("Could not find any Employee with the given id...");
     }
     public Employee createEmployee( Employee employee){
         return this.employeeRepository.save(employee);
