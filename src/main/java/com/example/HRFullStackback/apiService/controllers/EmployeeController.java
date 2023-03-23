@@ -15,7 +15,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/employees")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 public class EmployeeController {
 
     private final EmployeeService employeeService;
@@ -36,7 +36,7 @@ public class EmployeeController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Employee> getEmployeeById(@PathVariable UUID id){
+    public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id){
         // return this.employeeRepository.findById(id);
         if (id == null) return ResponseEntity.badRequest().header("Id path variable must be present and valid").build();
         Employee employee=this.employeeService.getEmployeeById(id);
@@ -52,13 +52,13 @@ public class EmployeeController {
    }
 
    @DeleteMapping("{id}")
-    public ResponseEntity<Employee> deleteEmployeeById(@PathVariable UUID id) {
+    public ResponseEntity<Employee> deleteEmployeeById(@PathVariable Long id) {
        Employee deleteEmployee=this.employeeService.deleteEmployeeById(id);
        return ResponseEntity.ok(deleteEmployee);
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Employee> updateEmployeeById(@PathVariable UUID id, @RequestBody Employee newEmployeeData){
+    public ResponseEntity<Employee> updateEmployeeById(@PathVariable Long id, @RequestBody Employee newEmployeeData){
         Employee updatedEmployee = this.employeeService.updateById(id,newEmployeeData);
         return ResponseEntity.ok(updatedEmployee);
     }
@@ -73,9 +73,8 @@ public class EmployeeController {
     ){
         var filteredList = this.employeeService.filterBy(name,dni,position,location);
         return ResponseEntity.ok(filteredList);
-
-
     }
+
 
 
 
