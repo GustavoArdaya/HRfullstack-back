@@ -5,6 +5,7 @@ INTO
 VALUES
   ('Ventas'),('Recursos Humanos'),('I&D'),('Marketing'),('Producción');
 
+
 INSERT
 INTO
   employees
