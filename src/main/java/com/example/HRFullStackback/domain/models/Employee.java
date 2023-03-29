@@ -27,7 +27,7 @@ public class Employee  {
     private Date birthDate;
     private String dni;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "department_id")
     private Department department;
 
