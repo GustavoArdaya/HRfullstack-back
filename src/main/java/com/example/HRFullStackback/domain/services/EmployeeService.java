@@ -1,20 +1,21 @@
 package com.example.HRFullStackback.domain.services;
 
 import com.example.HRFullStackback.domain.models.Employee;
+import com.example.HRFullStackback.infrastructure.repositories.IDepartmentJPARepository;
 import com.example.HRFullStackback.infrastructure.repositories.IEmployeeJPARepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.UUID;
 
 @Service
 public class EmployeeService {
 
     private final IEmployeeJPARepository employeeRepository;
+    private final IDepartmentJPARepository departmentRepository;
 
-    public EmployeeService(IEmployeeJPARepository employeeRepository) {
+    public EmployeeService(IEmployeeJPARepository employeeRepository, IDepartmentJPARepository departmentRepository) {
         this.employeeRepository = employeeRepository;
+        this.departmentRepository = departmentRepository;
     }
 
 
@@ -30,6 +31,8 @@ public class EmployeeService {
         throw new RuntimeException("Could not find any Employee with the given id...");
     }
     public Employee createEmployee( Employee employee){
+        var department=this.departmentRepository.findById(employee.getDepartment().getId()).orElseThrow(() -> new RuntimeException("Department Not Found"));
+        employee.setDepartment(department);
         return this.employeeRepository.save(employee);
     }
     public Employee deleteEmployeeById( Long id) {
@@ -41,10 +44,10 @@ public class EmployeeService {
 
     public Employee updateById(Long id, Employee newEmployeeData) {
 
-        var employee=getEmployeeById(id);
-        employee.updateAtr(newEmployeeData);
-        employeeRepository.save(employee);
-        return employee;
+        var department=this.departmentRepository.findById(newEmployeeData.getDepartment().getId()).orElseThrow(() -> new RuntimeException("Department Not Found"));
+        newEmployeeData.setDepartment(department);
+        newEmployeeData.setId(id);
+        return employeeRepository.save(newEmployeeData);
     }
 
 
