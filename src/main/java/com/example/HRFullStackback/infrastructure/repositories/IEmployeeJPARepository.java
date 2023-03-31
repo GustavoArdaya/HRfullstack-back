@@ -10,4 +10,5 @@ public interface IEmployeeJPARepository extends JpaRepository<Employee,Long> {
 //    @Query("SELECT * FROM EMployees" +
 //            "Where LOWER(name) like LOWER('%?1%') and ...)
     List<Employee> findByNameContainingIgnoreCaseAndDniContainingIgnoreCaseAndPositionContainingIgnoreCaseAndLocationContainingIgnoreCase(String name,String dni,String position,String location);
+
 }
