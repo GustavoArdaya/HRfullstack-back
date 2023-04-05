@@ -7,6 +7,7 @@ import com.example.HRFullStackback.domain.models.Employee;
 import com.example.HRFullStackback.domain.services.EmployeeService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,12 +31,14 @@ public class EmployeeController {
      * @return
      */
     @GetMapping
+    @PreAuthorize("hasAuthority('USER') || hasAuthority('ADMIN')")
     public ResponseEntity<List<Employee>> getAllEmployees(){
         List<Employee> employees = this.employeeService.getAllEmployees();
         return ResponseEntity.ok(employees);
     }
 
     @GetMapping("{id}")
+    @PreAuthorize("hasAuthority('USER') || hasAuthority('ADMIN')")
     public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id){
         // return this.employeeRepository.findById(id);
         if (id == null) return ResponseEntity.badRequest().header("Id path variable must be present and valid").build();
@@ -44,20 +47,23 @@ public class EmployeeController {
         return ResponseEntity.ok(employee);
     }
 
-   @PostMapping
+    @PostMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<Employee> createEmployee(@RequestBody Employee employee){
        Employee newEmployee=this.employeeService.createEmployee(employee);
        return ResponseEntity.ok(newEmployee);
 
    }
 
-   @DeleteMapping("{id}")
+    @DeleteMapping("{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<Employee> deleteEmployeeById(@PathVariable Long id) {
        Employee deleteEmployee=this.employeeService.deleteEmployeeById(id);
        return ResponseEntity.ok(deleteEmployee);
     }
 
     @PutMapping("{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<Employee> updateEmployeeById(@PathVariable Long id, @RequestBody Employee newEmployeeData){
         Employee updatedEmployee = this.employeeService.updateById(id,newEmployeeData);
         return ResponseEntity.ok(updatedEmployee);
@@ -65,6 +71,7 @@ public class EmployeeController {
 
 
     @GetMapping("search")
+    @PreAuthorize("hasAuthority('USER') || hasAuthority('ADMIN')")
     public ResponseEntity<List<Employee>> searchEmployeeBy(
             @RequestParam(required = false)String name,
             @RequestParam(required = false)String dni,
